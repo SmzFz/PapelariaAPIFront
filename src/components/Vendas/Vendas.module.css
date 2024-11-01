@@ -1,0 +1,39 @@
+/* Estilos personalizados para o tema de papelaria */
+.papelaria-theme {
+    background-color: #f0f4f8;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border-radius: 12px;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.btn-custom-primary {
+    background-color: #4a90e2;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+.btn-custom-primary:hover {
+    background-color: #357abd;
+}
+
+/* Estilos do Modal */
+.modal-header {
+    background-color: #f8f9fa;
+}
+
+.modal-title {
+    color: #2c3e50;
+}
+
+.modal-footer {
+    border-top: 2px solid #e9ecef;
+}

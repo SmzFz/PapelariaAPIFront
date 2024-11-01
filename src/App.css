@@ -1,42 +1,114 @@
+/* Reset e estilos base */
+body, html {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Definição de variáveis de cores */
+:root {
+  --primary-blue: #4a90e2;
+  --secondary-blue: #5ca0eb;
+  --light-gray: #f5f7fa;
+  --pattern-color: rgba(74, 144, 226, 0.05);
+}
+
+/* Estilo do background principal */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--light-gray) 0%, #ffffff 100%);
+  position: relative;
+  overflow-x: hidden;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Padrão de fundo decorativo */
+#root::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+      linear-gradient(45deg, var(--pattern-color) 25%, transparent 25%) -40px 0,
+      linear-gradient(-45deg, var(--pattern-color) 25%, transparent 25%) -40px 0,
+      linear-gradient(45deg, transparent 75%, var(--pattern-color) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--pattern-color) 75%);
+  background-size: 80px 80px;
+  z-index: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* Container principal para conteúdo */
+.container {
+  position: relative;
+  z-index: 1;
 }
 
+/* Estilização básica para cards e elementos de conteúdo */
 .card {
-  padding: 2em;
+  background: rgba(255, 255, 255, 0.95);
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.read-the-docs {
-  color: #888;
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Animação suave para links e botões */
+a, button {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Customização de scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-blue);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-blue);
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+  #root::before {
+      background-size: 40px 40px;
+  }
+}
+
+/* Estilos para melhorar a legibilidade do texto */
+body {
+  color: #2c3e50;
+  line-height: 1.6;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Estilo para loading ou transições */
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-out;
 }
