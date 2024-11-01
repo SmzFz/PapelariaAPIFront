@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const Header = ({ onLogout }) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const token = localStorage.getItem('token');
+  const navigate = useNavigate(); // Hook para navegação
 
   useEffect(() => {
     const savedMode = localStorage.getItem('theme');
@@ -44,6 +45,11 @@ const Header = ({ onLogout }) => {
   const linkHoverStyle = {
     transform: 'translateY(-2px)',
     transition: 'transform 0.3s ease'
+  };
+
+  const handleLogout = () => {
+    onLogout(); // Chama a função de logout
+    navigate('/login'); // Redireciona para a página de login
   };
 
   return (
@@ -135,22 +141,20 @@ const Header = ({ onLogout }) => {
           </ul>
 
           <div className="d-flex align-items-center">
-      
-            
             {token ? (
               <button 
-                className={`btn ${isDarkMode ? 'btn-danger' : 'btn-outline-danger'} d-flex align-items-center`}
-                onClick={onLogout}
+                className="btn" 
+                style={{ backgroundColor: '#ffb3b3', color: '#333', border: 'none' }} 
+                onClick={handleLogout} // Chama a função handleLogout
               >
                 <i className="fas fa-sign-out-alt me-2"></i>
                 Sair
               </button>
             ) : (
               <Link 
-                className={`btn ${isDarkMode ? 'btn-success' : 'btn-outline-success'} d-flex align-items-center`}
-                to="/login"
+                
               >
-                <i className="fas fa-sign-in-alt me-2"></i>
+                
                 Entrar
               </Link>
             )}
